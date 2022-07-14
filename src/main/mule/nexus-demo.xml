@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3f248996-5eac-4448-bf57-3ce74a65a089" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="nexus-demoFlow" doc:id="a4e6d6a7-ec4c-40ce-9cbd-0463f0a89181" >
+		<http:listener doc:name="Listener" doc:id="5ba8c613-a5ef-4f11-a970-d4435a79510d" config-ref="HTTP_Listener_config" path="/nexus"/>
+		<logger level="INFO" doc:name="Processing Started " doc:id="208d4399-505d-4616-ace0-ccc00b76483c" message="***** Processing Started  ******"/>
+		<ee:transform doc:name="Transform Message" doc:id="bf850ce6-51ad-48b1-8c33-d79f50b56b70" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Message" : "This is nexus server."
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
