@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage('Build'){
 			steps{
-				git branch: 'main', credentialsId: 'cabbdcc2-ae95-42d9-a016-50786bff5726', url: 'https://github.com/PradeshCnx/mule4Test.git'
+				git branch: 'main', credentialsId: 'cabbdcc2-ae95-42d9-a016-50786bff5726', url: 'https://github.com/PradeshCnx/nexusRepo.git'
 				bat "mvn -Dmaven.test.failure.ignore-true clean package"
 			}
 		}
@@ -11,9 +11,9 @@ pipeline{
 			steps{
 				nexusArtifactUploader artifacts: [
 				[
-				artifactId: 'aws_s3_buckect',
+				artifactId: 'nexus-demo',
 				classifier: '',
-				file: 'target/aws_s3_buckect',
+				file: 'target/nexus-demo',
 				type: 'war'
 				]
 				], 
