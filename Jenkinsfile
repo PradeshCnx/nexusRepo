@@ -13,7 +13,7 @@ pipeline{
 				[
 				artifactId: 'nexus-demo',
 				classifier: '',
-				file: 'target/nexus-demo',
+				file: 'target/nexus-demo-1.0.0.war',
 				type: 'war'
 				]
 				], 
