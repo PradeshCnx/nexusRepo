@@ -19,7 +19,7 @@ pipeline{
 				], 
 				credentialsId: 'nexus',
 				groupId: 'com.mycompany',
-				nexusUrl: 'localhost:8081/nexus/content/repositories',
+				nexusUrl: 'localhost:8081/nexus/content/repositories/sampleApp/',
 				nexusVersion: 'nexus3',
 				protocol: 'http',
 				repository: 'sampleApp-release',
