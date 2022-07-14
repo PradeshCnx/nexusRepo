@@ -13,7 +13,7 @@ pipeline{
 				[
 				artifactId: 'nexus-demo',
 				classifier: '',
-				file: 'target/nexus-demo-1.0.0.jar',
+				file: 'target/nexus-demo-1.0.0-mule-application.jar',
 				type: 'war'
 				]
 				], 
